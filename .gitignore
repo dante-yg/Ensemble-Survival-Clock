@@ -12,3 +12,5 @@ outputs/
 saved_models/
 FHS60_pipeline/
 Ensemble_model/
+
+inference_pipeline.ipynb
