@@ -1,0 +1,12 @@
+# This code targets Python 3.9
+numpy==2.3.5
+pandas==2.3.3
+scikit-learn==1.8.0
+scikit-survival==0.27.0
+lifelines==0.30.3
+joblib==1.5.2
+pyarrow==21.0.0
+torch==2.12.1
+torchtuples==0.2.2
+pycox==0.3.0
+tensorflow==2.21.0

@@ -1,0 +1,14 @@
+.ipynb_checkpoints/
+__pycache__/
+*.parquet
+*.xlsx
+*.pt
+*.png
+*.pkl
+*.joblib
+pyaging_data/
+logs/
+outputs/
+saved_models/
+FHS60_pipeline/
+Ensemble_model/
