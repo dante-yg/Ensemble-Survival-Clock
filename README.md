@@ -31,3 +31,8 @@ The notebooks automatically create and structure files within the following layo
 1. Run [feature_selection.ipynb](feature_selection.ipynb) top to bottom. This splits the FHS dataset, scales features, fits the elastic-net Cox model, and saves the list of selected CpG probes to a non-zero coefficients CSV.
 2. Copy and rename that generated coefficients CSV to `./coxnet_selected_cpgs_190.csv` (which is the filename expected by the next step).
 3. Run [ensemble_stacking_pipeline.ipynb](ensemble_stacking_pipeline.ipynb) top to bottom. After executing the first pipeline cell, identify the generated run-id folder name (e.g., `FHS60_YYYYMMDDHHMMSS`) printed in the output, and set the hardcoded `RUN_ID` in the subsequent cells to match this run-id.
+
+## Running Inference on New Datasets
+To predict mortality risk and epigenetic age on new DNA methylation datasets using the pre-trained ensemble survival clock:
+1. Ensure your methylation beta-value matrix has CpG features aligned (missing features will be automatically imputed with a neutral 0.5 value).
+2. Open and run [run_inference.ipynb](run_inference.ipynb) top to bottom. It will load all model files relatively from the `./pretrained_models/` directory and run the full stacked ensemble prediction.
