@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this code or model, please cite the article below."
+title: "Ensemble DNA methylation survival clock"
+type: software
+license: MIT
+repository-code: "https://github.com/dante-yg/Ensemble-Survival-Clock"
+authors:
+  - family-names: Muthukumar
+    given-names: Yugan Gogul
+    affiliation: "Department of Biological Science, Chosun University, Gwangju, Republic of Korea"
+  - family-names: Vijayakumar
+    given-names: Karthikeyan A.
+    affiliation: "Department of Biological Science, Chosun University, Gwangju, Republic of Korea"
+  - family-names: Cho
+    given-names: Gwang-Won
+    affiliation: "Department of Biological Science, Chosun University, Gwangju, Republic of Korea"
+keywords:
+  - epigenetic clock
+  - DNA methylation
+  - survival analysis
+  - ensemble learning
+  - mortality
+preferred-citation:
+  type: article
+  title: "Ensemble DNA methylation clock demonstrates Immune-metabolic aging signatures associated with mortality"
+  journal: "Mechanisms of Ageing and Development"
+  volume: 233
+  start: 112240
+  year: 2026
+  doi: "10.1016/j.mad.2026.112240"
+  authors:
+    - family-names: Muthukumar
+      given-names: Yugan Gogul
+    - family-names: Vijayakumar
+      given-names: Karthikeyan A.
+    - family-names: Cho
+      given-names: Gwang-Won
+
