@@ -1,6 +1,7 @@
 # Ensemble DNA methylation survival clock
 
 [![Python 3.9](https://img.shields.io/badge/python-3.9-3776AB.svg)](requirements.txt)
+[![Release](https://img.shields.io/github/v/release/dante-yg/Ensemble-Survival-Clock?color=2F5D8A)](https://github.com/dante-yg/Ensemble-Survival-Clock/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-2F5D8A.svg)](LICENSE)
 [![DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.mad.2026.112240-2F5D8A.svg)](https://doi.org/10.1016/j.mad.2026.112240)
 
@@ -10,15 +11,28 @@ This repository contains the code and trained model for an ensemble DNA methylat
   <img src="docs/pipeline.svg" alt="Pipeline: DNA methylation, elastic-net Cox feature selection, five base survival models, neural network meta-learner, ensemble risk score" width="100%">
 </p>
 
+## Performance
+
+| Cohort | Evaluation role | *n* | C-index (95% CI) | Time-dependent AUROC | Integrated Brier score |
+|---|---|---:|---|---|---|
+| Framingham Heart Study | Held-out test set (20%) | 700 | 0.838 (0.809–0.861) | 0.851 (5 y), 0.850 (10 y), 0.804 (12 y) | 0.065 |
+| Women's Health Initiative | External validation | 1,862 | 0.703 (0.687–0.720) | 0.646 (10 y), 0.742 (15 y), 0.767 (20 y) | 0.147 |
+
 ## Usage
 
 1. **01_feature_selection.ipynb** splits the FHS data into training (60%), validation (20%) and test (20%) sets, standardises the CpGs on the training set, and selects CpGs with cross-validated elastic-net Cox regression. The list used in the paper is included as `coxnet_selected_cpgs_190.csv`.
 2. **02_train_ensemble.ipynb** trains the five base survival models (random survival forest, gradient boosting, kernel survival SVM, Weibull AFT and MTLR) and the neural network meta-learner, then rescales the ensemble risk score to years of age. After the first cell has run, set `RUN_ID` in steps 3–5 of the notebook to the run folder it created.
-3. **03_run_inference.ipynb** loads the trained ensemble from `pretrained_models/` and scores new samples. The model files are described in [pretrained_models/README.md](pretrained_models/README.md).
+3. **03_run_inference.ipynb** (or **score_samples.py** from the command line) loads the trained ensemble from `pretrained_models/` and scores new samples. The model files are described in [pretrained_models/README.md](pretrained_models/README.md).
 
 ## Scoring your own samples
 
-Run the cells in `03_run_inference.ipynb`, then pass a table with one row per sample and one column per CpG (beta values):
+From the command line, pass a `.csv`, `.tsv` or `.parquet` file with one row per sample and one column per CpG (beta values):
+
+```bash
+python score_samples.py --input my_methylation.csv --output predictions.csv
+```
+
+Or interactively in `03_run_inference.ipynb`:
 
 ```python
 import pandas as pd
